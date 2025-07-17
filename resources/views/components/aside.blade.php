@@ -15,10 +15,10 @@
           {{ request()->is('clients') ? 'bg-black text-indigo-600' : 'text-gray-700 hover:bg-gray-200' }}">
             <span class="material-icons mr-2">Clients</span>
         </a>
-        <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
+        <a href="{{ route('tasks.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
             <span class="material-icons mr-2">Tasks</span>
         </a>
-        <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
+        <a href="{{ route('projects.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
             <span class="material-icons mr-2">Projects</span>
         </a>
     </nav>

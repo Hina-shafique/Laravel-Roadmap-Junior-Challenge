@@ -28,10 +28,10 @@
                 <a href="clients" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
                     <span class="material-icons mr-2"></span> Clients
                 </a>
-                <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
+                <a href="{{ route('tasks.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
                     <span class="material-icons mr-2">task</span> Tasks
                 </a>
-                <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
+                <a href="{{ route('projects.index') }}" class="flex items-center p-2 text-gray-700 hover:bg-gray-200">
                     <span class="material-icons mr-2">folder</span> Projects
                 </a>
             </nav>
