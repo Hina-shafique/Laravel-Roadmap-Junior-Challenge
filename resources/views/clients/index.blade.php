@@ -40,7 +40,8 @@
                                 <td class="px-6 py-4">{{ $client->company_city}}</td>
                                 <td class="px-6 py-4">{{ $client->company_zip }}</td>
                                 <td class="px-6 py-4 flex space-x-2">
-                                    <a href="{{ route('clients.edit', $client) }}" class="text-blue-500 hover:text-blue-700">
+                                    <a href="{{ route('clients.edit', $client) }}"
+                                        class="text-blue-500 hover:text-blue-700">
                                         ✏️
                                     </a>
                                     <form action="{{ route('clients.destroy', $client) }}" method="POST"
@@ -56,5 +57,8 @@
                 </table>
             </div>
         </main>
+    </div>
+    <div class="mt-4">
+        {{ $clients->links() }}
     </div>
 </x-app-layout>

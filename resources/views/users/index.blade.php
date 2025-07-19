@@ -36,8 +36,7 @@
                                 <td class="px-6 py-4">{{ $user->address }}</td>
                                 <td class="px-6 py-4">{{ $user->terms_accepted_role }}</td>
                                 <td class="px-6 py-4 flex space-x-2">
-                                    <a href="{{ route('users.edit', $user) }}"
-                                        class="text-blue-500 hover:text-blue-700">
+                                    <a href="{{ route('users.edit', $user) }}" class="text-blue-500 hover:text-blue-700">
                                         ✏️
                                     </a>
                                     <form action="{{ route('users.destroy', $user) }}" method="POST"
@@ -53,5 +52,8 @@
                 </table>
             </div>
         </main>
+    </div>
+    <div class="mt-4">
+        {{ $users->links() }}
     </div>
 </x-app-layout>

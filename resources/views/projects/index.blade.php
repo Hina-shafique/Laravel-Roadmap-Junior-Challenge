@@ -6,7 +6,8 @@
         <div class="flex-1 p-6">
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-2xl font-semibold">Projects</h1>
-                <a href="{{ route('projects.create') }}" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">+ Add Project</a>
+                <a href="{{ route('projects.create') }}"
+                    class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">+ Add Project</a>
             </div>
 
             <!-- Table -->
@@ -22,7 +23,8 @@
                         @forelse ($projects as $project)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('projects.show', $project->id) }}" class="text-blue-600 hover:underline">
+                                    <a href="{{ route('projects.show', $project->id) }}"
+                                        class="text-blue-600 hover:underline">
                                         {{ $project->title }}
                                     </a>
                                 </td>
@@ -39,5 +41,8 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class="mt-4">
+        {{ $projects->links() }}
     </div>
 </x-app-layout>
