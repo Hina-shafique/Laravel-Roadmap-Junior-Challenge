@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ProjectStatus;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -27,10 +28,12 @@ class ProjectController extends Controller
         $clients = Client::all();
         $users = User::all();
         $projects = Project::with(['user', 'client'])->get();
+        $status = ProjectStatus::cases(); // Get all status values
         return view('projects.create',[
             'clients' => $clients,
             'users' => $users,
-            'projects' => $projects
+            'projects' => $projects,
+            'status' => $status, 
         ]);
     }
 
@@ -61,6 +64,7 @@ class ProjectController extends Controller
             'clients' => Client::all(),
             'users' => User::all(),
             'tasks' => $project->tasks()->with('user')->get(),
+            'status' => ProjectStatus::cases(), 
         ]);
     }
 

@@ -23,7 +23,7 @@
                     <p class="text-sm"><strong>Deadline:</strong> {{ $project->deadline }}</p>
                     <p class="text-sm"><strong>Status:</strong>
                         <span class="inline-block px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">
-                            {{ ucfirst($project->status) }}
+                            {{ ucfirst($project->status->label()) }}
                         </span>
                     </p>
                     <p class="text-sm text-gray-500 mt-2">Created: {{ $project->created_at->format('M d, Y h:i A') }}

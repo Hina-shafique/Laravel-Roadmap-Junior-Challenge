@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Project;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Enums\ProjectStatus;
 
 class StoreProjectRequest extends FormRequest
 {
@@ -27,7 +30,7 @@ class StoreProjectRequest extends FormRequest
             'client_id' => 'required|exists:clients,id',
             'user_id' => 'required|exists:users,id',
             'deadline' => 'nullable|date',
-            'status' => 'in:open,closed,in-progress,completed',
+            'status' => ['required', Rule::in(ProjectStatus::value())], 
         ];
     }
 }

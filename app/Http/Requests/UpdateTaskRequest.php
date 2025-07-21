@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\TaskStatus;
+use App\Models\Task;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateTaskRequest extends FormRequest
 {
@@ -28,7 +31,7 @@ class UpdateTaskRequest extends FormRequest
             'user_id' => 'required|exists:users,id',
             'client_id' => 'required|exists:clients,id',
             'deadline' => 'nullable|date',
-            'status' => 'in:open,closed,in-progress,completed',
+            'status' => ['required', Rule::in(TaskStatus::value())],
         ];
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Project;
 use App\Models\Client;
 use App\Models\User;
+use App\Enums\TaskStatus;
 
 class TaskController extends Controller
 {
@@ -28,10 +29,12 @@ class TaskController extends Controller
         $projects = Project::all();
         $users = User::all();
         $clients = Client::all();
+        $status = TaskStatus::cases();
         return view('tasks.create', [
             'projects' => $projects,
             'users' => $users,
-            'clients' => $clients
+            'clients' => $clients,
+            'status' => $status
         ]);
     }
 
@@ -62,11 +65,13 @@ class TaskController extends Controller
         $projects = Project::all();
         $users = User::all();
         $clients = Client::all();
+        $status = TaskStatus::cases();
         return view('tasks.edit', [
             'task' => $task,
             'projects' => $projects,
             'users' => $users,
-            'clients' => $clients
+            'clients' => $clients,
+            'status' => $status
         ]);
     }
 

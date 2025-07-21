@@ -23,7 +23,7 @@
                     <p class="text-sm"><strong>Deadline:</strong> {{ $task->deadline }}</p>
                     <p class="text-sm"><strong>Status:</strong>
                         <span class="inline-block px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">
-                            {{ ucfirst($task->status) }}
+                            {{ ucfirst($task->status->label()) }}
                         </span>
                     </p>
                     <p class="text-sm text-gray-500 mt-2">Created: {{ $task->created_at->format('M d, Y h:i A') }}
@@ -52,7 +52,7 @@
                     <h2 class="text-lg font-medium mb-2">Projects Information</h2>
                     <a href="{{ route('projects.show', $task->project->id) }}"
                         class="text-blue-600 hover:underline">{{ $task->project->title }}</a>
-                        <p class="text-sm text-gray-500 mt-2">Status: {{ $task->project->status }}</p>
+                        <p class="text-sm text-gray-500 mt-2">Status: {{ $task->project->status->label()}}</p>
                 </div>
             </div>
             <!-- Company Address -->
@@ -82,7 +82,7 @@
                                 <td class="p-2">{{ $task->user->name ?? 'N/A' }}</td>
                                 <td class="p-2">
                                     <span
-                                        class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-800">{{ ucfirst($task->status) }}</span>
+                                        class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-800">{{ ucfirst($task->status->label()) }}</span>
                                 </td>
                                 <td class="p-2">{{ $task->deadline }}</td>
                                 <td class="p-2">

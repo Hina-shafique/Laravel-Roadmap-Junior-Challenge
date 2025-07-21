@@ -29,7 +29,8 @@
                         <x-forms.input type="date" label="Deadline" name="deadline" placeholder="Enter deadline" />
                     </div>
                     <div>
-                        <x-forms.input label="Status" name="status" placeholder="Enter status"  />
+                        <x-forms.select label="Status" name="status" placeholder="Enter status" :options="$status"
+                            :optionKey="'value'" :optionValue="'name'" />
                     </div>
                 </div>
 

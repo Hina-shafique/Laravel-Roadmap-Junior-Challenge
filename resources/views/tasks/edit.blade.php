@@ -34,7 +34,8 @@
                         <x-forms.input type="date" label="Deadline" name="deadline" placeholder="Enter deadline"  value="{{ $task->deadline }}"/>
                     </div>
                     <div>
-                        <x-forms.input label="Status" name="status" placeholder="Enter status"  value="{{ $task->status }}" />
+                        <x-forms.select label="Status" name="status" placeholder="Enter status" :optionKey="'value'"
+                        :options="$status" :optionValue="'name'" value="{{ $task->status->label() }}" />
                     </div>
                 </div>
 
