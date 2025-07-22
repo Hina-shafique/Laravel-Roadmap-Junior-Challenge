@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\ProjectStatus;
 use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Project extends Model
 {
@@ -52,5 +53,14 @@ class Project extends Model
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    // Accessor and mutators
+
+    public function description() : Attribute
+    {
+        return Attribute::make(
+            get: fn(string $description) => ucfirst($description),
+        );
     }
 }
