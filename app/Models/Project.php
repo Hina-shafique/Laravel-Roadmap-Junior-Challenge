@@ -9,11 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 use App\Enums\ProjectStatus;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Project extends Model
+class Project extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'title',

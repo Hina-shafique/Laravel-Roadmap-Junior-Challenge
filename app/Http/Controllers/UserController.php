@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -12,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::query()->latest()->paginate(10);
+        $users = User::query()->latest()->with('roles')->paginate(10);
         return view('users.index', compact('users'));
     }
 

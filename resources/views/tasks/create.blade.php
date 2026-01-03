@@ -12,7 +12,7 @@
                     </div>
 
                     <div>
-                        <x-forms.input label="Title" name="title" placeholder="Enter title" />
+                        <x-forms.input label="Title" name="title" placeholder="Enter title" value="{{ old('title') }}" />
                     </div>
                     <div>
                         <x-forms.input label="Description" name="description" placeholder="Enter description" />
@@ -37,7 +37,17 @@
                          :options="$status" :optionValue="'name'" />
                     </div>
                 </div>
-
+            
+                @session('errors')
+                    <div class="mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+                        <ul class="list-disc list-inside">
+                            @foreach (session('errors')->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                
+                @endsession
                 <!-- Form Actions -->
                 <div class="mt-8 pt-5 border-t border-gray-200">
                     <div class="flex justify-end space-x-6 ">

@@ -28,7 +28,7 @@
                                     </a>
                                 </td>
                                 <td class="px-6 py-4 text-gray-700">
-                                    {{ Str::limit($task->description, 100) }}
+                                    {{ \Illuminate\Support\Str::limit($task->description, 100) }}
                                 </td>
                             </tr>
                         @empty

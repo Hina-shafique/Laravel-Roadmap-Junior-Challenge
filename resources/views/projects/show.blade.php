@@ -55,7 +55,7 @@
                         @foreach($project->tasks as $task)
                             <li class="flex justify-between items-center">
                                 {{ $task->title }}
-                                <span class="text-xs px-2 py-1 bg-gray-200 rounded">{{ ucfirst($task->status) }}</span>
+                                <span class="text-xs px-2 py-1 bg-gray-200 rounded">{{ ucfirst($task->status->value) }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -88,7 +88,7 @@
                                 <td class="p-2">{{ $task->user->name ?? 'N/A' }}</td>
                                 <td class="p-2">
                                     <span
-                                        class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-800">{{ ucfirst($task->status) }}</span>
+                                        class="text-xs px-2 py-1 rounded bg-gray-100 text-gray-800">{{ ucfirst($task->status->value) }}</span>
                                 </td>
                                 <td class="p-2">{{ $task->deadline }}</td>
                                 <td class="p-2">

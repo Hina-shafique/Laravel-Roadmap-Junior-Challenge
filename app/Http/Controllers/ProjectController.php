@@ -8,12 +8,20 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Client;
 use App\Models\User;
+use App\Policies\ProjectPolicy;
+use Illuminate\Support\Facades\App;
+
 
 class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Project::class, 'project');
+    // }
     public function index()
     {
         $projects = Project::with(['user', 'client'])->latest()->paginate(10);

@@ -1,17 +1,20 @@
 <?php
 
+use App\Exceptions\TaskException;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\mediaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DiController;
 
 Route::redirect('/', '/login');
+Route::get('he', [DiController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('/dashboard', 'dashboard')
+->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -19,9 +22,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('clients', ClientController::class)->middleware(['auth', 'verified']);
-Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
-Route::resource('projects', ProjectController::class)->middleware(['auth', 'verified']);
-Route::resource('tasks', TaskController::class)->middleware(['auth', 'verified']);
+Route::get('/task-task', function () {
+    throw new TaskException('This is a custom task exception message.');
+});
 
-require __DIR__.'/auth.php';
+Route::resource('clients', ClientController::class)->middleware(['auth', 'verified']);
+Route::resource('users', UserController::class)->middleware('role:admin');
+Route::resource('projects', ProjectController::class);
+Route::resource('tasks', TaskController::class)->middleware(['auth', 'verified', 'ReplaceText']);
+
+Route::group(['prefix' => 'media', 'as' => 'media.'], function () {
+    Route::post('{model}/{id}/upload', [MediaController::class, 'store'])->name('upload');
+    Route::get('{mediaItem}/download', [MediaController::class, 'download'])->name('download');
+    Route::delete('{model}/{id}/{mediaItem}/delete', [MediaController::class, 'destroy'])->name('delete');
+});
+
+
+require __DIR__ . '/auth.php';
+// require __DIR__ . '/facadeTry.php';
